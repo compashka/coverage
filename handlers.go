@@ -179,7 +179,7 @@ func calculateTotalCoverage(output string) (float64, error) {
 // CovResetHandler resets all coverage counters locally and across all pods.
 func CovResetHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Header.Get(hostnameHeader) == hostname {
-		w.WriteHeader(http.StatusOK)
+		w.Header().Set(hostnameHeader, hostname)
 		return
 	}
 
@@ -256,7 +256,7 @@ func CovHTMLHandler(w http.ResponseWriter, r *http.Request) {
 // so it can be fetched by other pods in a cluster.
 func CovBinProfileHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Header.Get(hostnameHeader) == hostname {
-		w.WriteHeader(http.StatusOK)
+		w.Header().Set(hostnameHeader, hostname)
 		return
 	}
 
