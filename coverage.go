@@ -3,7 +3,7 @@
 //
 // To use this package, simply import it in your program:
 //
-//	import _ "github.com/compashka/coverage-profiling"
+//	import _ "github.com/compashka/coverage"
 //
 // It automatically registers several endpoints under /debug/coverage/:
 //

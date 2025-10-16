@@ -1,6 +1,6 @@
 # Coverage Profiling for Go Applications
 
-`coverage-profiling` is a Go package that provides HTTP handlers and utilities to collect, merge, and display **runtime code coverage** data in multi-instance Go applications. It is particularly useful in environments like **Kubernetes** where multiple pods run the same application and you want to aggregate coverage metrics across all instances.
+`coverage` is a Go package that provides HTTP handlers and utilities to collect, merge, and display **runtime code coverage** data in multi-instance Go applications. It is particularly useful in environments like **Kubernetes** where multiple pods run the same application and you want to aggregate coverage metrics across all instances.
 
 ---
 
@@ -30,7 +30,7 @@
 ## Installation
 
 ```bash
-go get github.com/compashka/coverage-profiling/coverage
+go get github.com/compashka/coverage
 ```
 
 ## Usage
@@ -38,5 +38,5 @@ go get github.com/compashka/coverage-profiling/coverage
 ```go
 package main
 
-import _ "github.com/compashka/coverage-profiling"
+import _ "github.com/compashka/coverage"
 ```

@@ -1,3 +1,3 @@
-module github.com/compashka/coverage-profiling
+module github.com/compashka/coverage
 
 go 1.25.1
