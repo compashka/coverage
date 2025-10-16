@@ -120,6 +120,8 @@ func resetOtherProfile(resetURL string) error {
 			return err
 		}
 
+		req.Header.Set(hostnameHeader, hostname)
+
 		// Execute the request
 		resp, err := http.DefaultClient.Do(req)
 		cancel()

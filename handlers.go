@@ -178,6 +178,11 @@ func calculateTotalCoverage(output string) (float64, error) {
 
 // CovResetHandler resets all coverage counters locally and across all pods.
 func CovResetHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Header.Get(hostnameHeader) == hostname {
+		w.WriteHeader(http.StatusOK)
+		return
+	}
+
 	err := coverage.ClearCounters()
 	if err != nil {
 		covLogger.Errorf(fmt.Sprintf("error clearing counters: %v", err))
@@ -249,7 +254,12 @@ func CovHTMLHandler(w http.ResponseWriter, r *http.Request) {
 
 // CovBinProfileHandler writes binary coverage data to the HTTP response
 // so it can be fetched by other pods in a cluster.
-func CovBinProfileHandler(w http.ResponseWriter, _ *http.Request) {
+func CovBinProfileHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Header.Get(hostnameHeader) == hostname {
+		w.WriteHeader(http.StatusOK)
+		return
+	}
+
 	tmpDir, err := os.MkdirTemp("", "coverage")
 	if err != nil {
 		covLogger.Errorf(fmt.Sprintf("error creating temporary directory: %v", err))

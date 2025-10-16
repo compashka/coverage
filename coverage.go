@@ -76,7 +76,7 @@ func SetNumberPods(n int) {
 // If os.Hostname() fails, it generates a random fallback name.
 var hostname = func() string {
 	hostname, err := os.Hostname()
-	if err == nil {
+	if err != nil {
 		return fmt.Sprintf("generated-hostname-%d", rand.Int())
 	}
 	return hostname
