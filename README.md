@@ -3,6 +3,11 @@
 `coverage` is a Go package that provides HTTP handlers and utilities to collect, merge, and display **runtime code coverage** data in multi-instance Go applications. It is particularly useful in environments like **Kubernetes** where multiple pods run the same application and you want to aggregate coverage metrics across all instances.
 
 ---
+## What is Coverage?
+
+For more details, see the official Go documentation: [Coverage profiling support for integration tests](https://go.dev/doc/build-cover)
+
+---
 
 ## Why use this package?
 
