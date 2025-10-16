@@ -102,8 +102,8 @@ func write(p []byte, parentDir, dirName, fileName string) error {
 // It avoids sending duplicate requests to the same hostname.
 func resetOtherProfile(resetURL string) error {
 	hosts := map[string]struct{}{hostname: {}} // Track hosts we've already reset
-	reqTimeout := 3 * time.Second              // Timeout for individual requests
-	allReqTimeout := 15 * time.Second          // Total timeout for resetting all pods
+	reqTimeout := 2 * time.Second              // Timeout for individual requests
+	allReqTimeout := 5 * time.Second           // Total timeout for resetting all pods
 	now := time.Now()
 
 	for len(hosts) < numberPods {
