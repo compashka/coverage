@@ -18,14 +18,14 @@ var filenameHeader = "x-filename"
 // It writes each response to a subdirectory in parentDir, avoiding duplicates based on hostname.
 func requestOtherProfile(parentDir, profileURL string) error {
 	hosts := map[string]struct{}{hostname: {}} // Track hosts we've already received data from
-	reqTimeout := 3 * time.Second              // Timeout for individual requests
-	allReqTimeout := 15 * time.Second          // Total timeout for gathering all profiles
+	reqTimeout := 2 * time.Second              // Timeout for individual requests
+	allReqTimeout := 5 * time.Second           // Total timeout for gathering all profiles
 	now := time.Now()
 
 	for len(hosts) < numberPods {
 		// Stop if total timeout exceeded
 		if time.Since(now) > allReqTimeout {
-			return fmt.Errorf("requests timeout exceeded")
+			return fmt.Errorf("timeout exceeded: expected %d pods, got %d responses", numberPods, len(hosts))
 		}
 
 		// Create HTTP request with context timeout
